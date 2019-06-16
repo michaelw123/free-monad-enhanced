@@ -1,0 +1,55 @@
+
+ val programs1 = for {
+    price1 <- liftForEach(CheckPrice("GOOG"))
+    price2 <- liftForEach(CheckPrice("SSS"))
+    price3 <- liftForEach(CheckPrice("TTT"))
+
+  }{
+    println("doing stuff "+price1 +price2 + price3)
+  }
+
+
+ val programs1: Free[StockTrade,String] = liftForEach(CheckPrice.apply("GOOG"))
+    .foreach((price1: String) =>liftForEach(CheckPrice.apply("SSS"))
+        .foreach((price2: String) =>liftForEach(CheckPrice.apply("TTT"))
+            .foreach((price3: String) => println("doing stuff ".+(price1).+(price2.+(price3))))
+        )
+    )
+
+
+ val programs2 = for {
+     price1 <- liftForEach(CheckPrice("GOOG"))
+     price2 <- liftForEach(CheckPrice("SSS")) if price1 == "20"
+     price3 <- liftForEach(CheckPrice("TTT"))
+   }{
+     println("doing stuff "+price1 +price2 )
+   }
+
+
+   val programs2: Free[tradestockwithforeach.StockTrade, String] = liftForEach(CheckPrice.apply("GOOG"))
+       .foreach((price1:String) =>
+         liftForEach(CheckPrice.apply("SSS"))
+           .withFilter((price2: Nothing) => price1.==("20"))
+           .foreach((price2: Nothing) =>
+             liftForEach(CheckPrice.apply("TTT"))
+               .foreach((price3: String) => println("doing stuff ".+(price1).+(price2)))
+           )
+       )
+
+
+
+         val programs3 = for {
+             price1 <- lift(CheckPrice("GOOG"))
+             price2 <- lift(CheckPrice("SSS")) if price1 == "20"
+             price3 <- lift(CheckPrice("TTT"))
+           } yield ()
+
+          val programs3: Free[StockTrade, Unit] = lift(CheckPrice.apply("GOOG"))
+              .flatMap((price1: String) =>
+                lift(CheckPrice.apply("SSS"))
+                  .withFilter((price2: String) => price1.==("20"))
+                  .flatMap((price2: String) =>
+                    lift(CheckPrice.apply("TTT"))
+                      .map((price3: String) => ())
+                  )
+              )
