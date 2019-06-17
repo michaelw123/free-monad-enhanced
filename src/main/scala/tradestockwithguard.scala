@@ -46,8 +46,12 @@ object tradestockwithguard extends App {
   case class Empty[F[_], I, A](sub: F[I], cont: I => Free[F, A], filter: A => Boolean) extends Free[F, A]
 
 
-  implicit def lift[A](fa: StockTrade[A]): Free[StockTrade, A] = FlatMap(fa, Return.apply, _ => true)
-  implicit def lift[A](fa: AskTell[A]): Free[AskTell, A] = FlatMap(fa, Return.apply, _ => true)
+  //implicit def lift[A](fa: StockTrade[A]): Free[StockTrade, A] = FlatMap(fa, Return.apply, _ => true)
+  //implicit def lift[A](fa: AskTell[A]): Free[AskTell, A] = FlatMap(fa, Return.apply, _ => true)
+
+  implicit def liftF[F[_], A](fa: F[A]): Free[F, A] = FlatMap(fa, Return.apply, _ => true)
+
+  //type AskTellType[A] = Free[AskTell, A]
 
 
   val s:List[String] = List("aaa", "bbb")
@@ -62,7 +66,7 @@ object tradestockwithguard extends App {
 
   sealed trait AskTell[A]
   case class Ask(message:String) extends AskTell[String]
-  case class Tell(message:String) extends AskTell[String]
+  case class Tell(message:String) extends AskTell[Unit]
   case class DoNothing(tick: String) extends  AskTell[String]
 
   val programs = for {
@@ -82,7 +86,7 @@ object tradestockwithguard extends App {
 
   val asktell = for {
     hour <- Ask("What time is it?")
-    morning <- Tell("Good Morning")  if (hour <= "12")
+    morning <- Tell("Good Morning")  if (hour >= "12")
     afternoon <- Tell("Good afternoon") if (hour > "12")
   } yield ()
 
@@ -92,10 +96,8 @@ object tradestockwithguard extends App {
         println("What time is it?")
         "15".asInstanceOf[A]
       }
-      case Tell(message) => {
-        println(message)
-        message.asInstanceOf[A]
-      }
+      case Tell(message) => println(message)
+
       case  DoNothing(message) => message.asInstanceOf[A]
     }
     def execNone[A](fa: AskTell[A]): A = {
