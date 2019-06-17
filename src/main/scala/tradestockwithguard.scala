@@ -13,8 +13,7 @@ object tradestockwithguard extends App {
 
     def foreach[U](f: A => U) : Free[F, A] = this match {
       case Return(a) => {
-        val fa = f(a)
-        fa match {
+        f(a) match {
           case free : Free[F, A] => free
           case _ => this
         }
@@ -40,12 +39,6 @@ object tradestockwithguard extends App {
 
   implicit def liftF[F[_], A](fa: F[A]): Free[F, A] = FlatMap(fa, Return.apply, true)
 
-
-  val s:List[String] = List("aaa", "bbb")
-
-
-
-
   sealed trait StockTrade[A]
   case class CheckPrice(tick:String) extends StockTrade[String]
   case class Buy(tick: String) extends StockTrade[String]
@@ -54,7 +47,6 @@ object tradestockwithguard extends App {
   sealed trait AskTell[A]
   case class Ask(message:String) extends AskTell[String]
   case class Tell(message:String) extends AskTell[String]
-  case class DoNothing(tick: String) extends  AskTell[String]
 
   val programs = for {
     price1 <- CheckPrice("GOOG")
@@ -109,8 +101,8 @@ object tradestockwithguard extends App {
   }
   println(programs1)
   // println(programs1)
-  runFree(asktell, asktellExec)
-  //runFree(programs1, consoleExec)
+  //runFree(asktell, asktellExec)
+  runFree(programs1, consoleExec)
 
   def runFree[F[_], A](prg: Free[F, A], executor: Executor[F]): A = {
     prg match {

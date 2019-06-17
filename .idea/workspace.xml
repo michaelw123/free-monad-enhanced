@@ -73,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="85" column="35" selection-start-line="85" selection-start-column="35" selection-end-line="85" selection-end-column="35" />
+            <state relative-caret-position="238">
+              <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -452,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560776575341</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="take out Empty">
+      <created>1560784107709</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1560784107709</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -494,7 +501,8 @@
     <MESSAGE value="init" />
     <MESSAGE value="foreach free monad" />
     <MESSAGE value="take out ForEach" />
-    <option name="LAST_COMMIT_MESSAGE" value="take out ForEach" />
+    <MESSAGE value="take out Empty" />
+    <option name="LAST_COMMIT_MESSAGE" value="take out Empty" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -549,7 +557,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="scala-line">
           <url>file://$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala</url>
-          <line>22</line>
+          <line>21</line>
           <properties />
           <option name="timeStamp" value="62" />
         </line-breakpoint>
@@ -726,8 +734,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="85" column="35" selection-start-line="85" selection-start-column="35" selection-end-line="85" selection-end-column="35" />
+        <state relative-caret-position="238">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
         </state>
       </provider>
     </entry>
