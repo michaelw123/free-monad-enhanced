@@ -6,10 +6,7 @@ object tradestockwithguard extends App {
     def flatMap[B](f: A => Free[F, B]): Free[F, B] = this match {
       case Return(a) => f(a)
       case FlatMap(sub, cont, filter) => {
-        if (filter(ph))
-          FlatMap(sub, cont andThen (_ flatMap f), _ => true)
-        else
-          Empty(sub,  cont  andThen (_ flatMap f), _ => true )
+          FlatMap(sub, cont andThen (_ flatMap f), filter)
       }
     }
     def  map[B](f: A => B): Free[F, B] = flatMap(a => Return(f(a)))
@@ -23,10 +20,7 @@ object tradestockwithguard extends App {
         }
       }
       case FlatMap(sub, cont, filter ) => {
-        if (filter(ph))
           FlatMap(sub, cont  andThen (_ foreach f), filter)
-        else
-          Empty(sub,  cont  andThen (_ foreach f), filter )
       }
     }
     def withFilter(f: A => Boolean): Free[F, A] =  this match {
@@ -34,7 +28,7 @@ object tradestockwithguard extends App {
         this
       }
       case FlatMap(sub, cont, filter ) => {
-        FlatMap(sub, cont, f)
+        FlatMap(sub, cont, f(ph))
       }
     }
 
@@ -42,16 +36,9 @@ object tradestockwithguard extends App {
 
   }
   final case class Return[F[_], A](a: A) extends Free[F, A]
-  case class FlatMap[F[_], I, A](sub: F[I], cont: I => Free[F, A],  filter: A => Boolean) extends Free[F, A]
-  case class Empty[F[_], I, A](sub: F[I], cont: I => Free[F, A], filter: A => Boolean) extends Free[F, A]
+  case class FlatMap[F[_], I, A](sub: F[I], cont: I => Free[F, A],  filter:Boolean) extends Free[F, A]
 
-
-  //implicit def lift[A](fa: StockTrade[A]): Free[StockTrade, A] = FlatMap(fa, Return.apply, _ => true)
-  //implicit def lift[A](fa: AskTell[A]): Free[AskTell, A] = FlatMap(fa, Return.apply, _ => true)
-
-  implicit def liftF[F[_], A](fa: F[A]): Free[F, A] = FlatMap(fa, Return.apply, _ => true)
-
-  //type AskTellType[A] = Free[AskTell, A]
+  implicit def liftF[F[_], A](fa: F[A]): Free[F, A] = FlatMap(fa, Return.apply, true)
 
 
   val s:List[String] = List("aaa", "bbb")
@@ -66,7 +53,7 @@ object tradestockwithguard extends App {
 
   sealed trait AskTell[A]
   case class Ask(message:String) extends AskTell[String]
-  case class Tell(message:String) extends AskTell[Unit]
+  case class Tell(message:String) extends AskTell[String]
   case class DoNothing(tick: String) extends  AskTell[String]
 
   val programs = for {
@@ -86,41 +73,38 @@ object tradestockwithguard extends App {
 
   val asktell = for {
     hour <- Ask("What time is it?")
-    morning <- Tell("Good Morning")  if (hour >= "12")
+    morning <- Tell("Good Morning")  if (hour <= "12")
     afternoon <- Tell("Good afternoon") if (hour > "12")
   } yield ()
 
   val asktellExec = new  Executor[AskTell] {
-    override def exec[A](fa: AskTell[A]) = fa match {
-      case Ask(message) => {
+    override def exec[A](fa: AskTell[A], filter:Boolean) = fa match {
+      case Ask(message) if filter => {
         println("What time is it?")
         "15".asInstanceOf[A]
       }
-      case Tell(message) => println(message)
+      case Tell(message) if filter => {
+        println(message)
+        message.asInstanceOf[A]
+      }
 
-      case  DoNothing(message) => message.asInstanceOf[A]
-    }
-    def execNone[A](fa: AskTell[A]): A = {
-      "DoNothing".asInstanceOf[A]
+      case  _ => "".asInstanceOf[A]
     }
   }
   val consoleExec = new Executor[StockTrade] {
-    override def exec[A](fa: StockTrade[A]) = fa match {
-      case CheckPrice(tick) => {
+    override def exec[A](fa: StockTrade[A], filter:Boolean) = fa match {
+      case CheckPrice(tick) if filter => {
         println("check " + tick)
         if (tick == "GOOG")
           "60".asInstanceOf[A]
         else
           "50".asInstanceOf[A]
       }
-      case Buy(tick)  => println("buy " + tick)
+      case Buy(tick)  if filter  => println("buy " + tick)
         tick.asInstanceOf[A]
 
-      case  NoAction(tick) => tick.asInstanceOf[A]
+      case  _ => "".asInstanceOf[A]
 
-    }
-    def execNone[A](fa: StockTrade[A]): A = {
-      "DoNothing".asInstanceOf[A]
     }
   }
   println(programs1)
@@ -129,21 +113,17 @@ object tradestockwithguard extends App {
   //runFree(programs1, consoleExec)
 
   def runFree[F[_], A](prg: Free[F, A], executor: Executor[F]): A = {
-
     prg match {
 
       case Return(a) => a
       case FlatMap(sub, cont, filter) => {
-        runFree(cont(executor.exec(sub)), executor)
-      }
-      case Empty(sub, cont,filter) => {
-        runFree(cont(executor.execNone(sub)), executor)
-      }
+          runFree(cont(executor.exec(sub, filter)), executor)
+        }
+
     }
   }
   sealed trait Executor[F[_]] {
-    def exec[A](fa: F[A]): A
-    def execNone[A](fa: F[A]): A
+    def exec[A](fa: F[A], filter:Boolean): A
   }
 
 

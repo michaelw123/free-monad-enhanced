@@ -73,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="95" column="35" lean-forward="true" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
+            <state relative-caret-position="351">
+              <caret line="85" column="35" selection-start-line="85" selection-start-column="35" selection-end-line="85" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -445,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560723122534</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="take out ForEach">
+      <created>1560776575341</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1560776575341</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -542,33 +549,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="scala-line">
           <url>file://$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala</url>
-          <line>25</line>
-          <properties />
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="scala-line">
-          <url>file://$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala</url>
-          <line>26</line>
+          <line>22</line>
           <properties />
           <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="scala-line">
-          <url>file://$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala</url>
-          <line>28</line>
-          <properties />
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="scala-line">
-          <url>file://$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala</url>
-          <line>134</line>
-          <properties />
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="scala-line">
-          <url>file://$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala</url>
-          <line>139</line>
-          <properties />
-          <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="scala-line">
           <url>file://$PROJECT_DIR$/src/main/scala/forcomptest2.scala</url>
@@ -743,8 +726,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="95" column="35" lean-forward="true" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
+        <state relative-caret-position="351">
+          <caret line="85" column="35" selection-start-line="85" selection-start-column="35" selection-end-line="85" selection-end-column="35" />
         </state>
       </provider>
     </entry>
