@@ -1,2 +1,1 @@
-Allows free monad to participate in foreach and guard in for-comprehension
-
+Incorporate foreach and guards with monadic operations in Free Monads.
