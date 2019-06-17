@@ -75,7 +75,6 @@ object tradestockwithguard extends App {
         println(message)
         message.asInstanceOf[A]
       }
-
       case  _ => "".asInstanceOf[A]
     }
   }
@@ -97,17 +96,15 @@ object tradestockwithguard extends App {
   }
   println(programs1)
   // println(programs1)
-  //runFree(asktell, asktellExec)
-  runFree(programs1, consoleExec)
+  runFree(asktell, asktellExec)
+  //runFree(programs1, consoleExec)
 
   def runFree[F[_], A](prg: Free[F, A], executor: Executor[F]): A = {
     prg match {
-
       case Return(a) => a
       case FlatMap(sub, cont, filter) => {
           runFree(cont(executor.exec(sub, filter)), executor)
         }
-
     }
   }
   sealed trait Executor[F[_]] {
