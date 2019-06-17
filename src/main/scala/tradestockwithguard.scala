@@ -23,12 +23,8 @@ object tradestockwithguard extends App {
       }
     }
     def withFilter(f: A => Boolean): Free[F, A] =  this match {
-      case Return(a) => {
-        this
-      }
-      case FlatMap(sub, cont, filter ) => {
-        FlatMap(sub, cont, f(ph))
-      }
+      case Return(a) => this
+      case FlatMap(sub, cont, filter ) => FlatMap(sub, cont, f(ph))
     }
 
 
