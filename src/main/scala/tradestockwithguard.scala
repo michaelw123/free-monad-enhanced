@@ -68,7 +68,8 @@ object tradestockwithguard extends App {
   val asktellExec = new  Executor[AskTell] {
     override def exec[A](fa: AskTell[A], filter:Boolean) = fa match {
       case Ask(message) if filter => {
-        println("What time is it?")
+        println(message)
+        //invoke some service and obtain the answer
         "15".asInstanceOf[A]
       }
       case Tell(message) if filter => {
