@@ -56,7 +56,7 @@ object tradestockwithguard extends App {
     price3 <- Buy("TTT")if price1 <= "60"
 
   }{
-    println("doing stuff "+price1 +price2 + price3)
+    println("side effect "+price1 +price2 + price3)
   }
 
   val asktell = for {
@@ -74,9 +74,10 @@ object tradestockwithguard extends App {
       }
       case Tell(message) if filter => {
         println(message)
+        //bounce the message back
         message.asInstanceOf[A]
       }
-      case  _ => "".asInstanceOf[A]
+      case  _ => "filtered out".asInstanceOf[A]
     }
   }
   val consoleExec = new Executor[StockTrade] {
@@ -95,7 +96,7 @@ object tradestockwithguard extends App {
 
     }
   }
-  println(programs1)
+  //println(programs1)
   // println(programs1)
   runFree(asktell, asktellExec)
   //runFree(programs1, consoleExec)
