@@ -47,6 +47,13 @@ object enhanced extends App {
     _ <- Tell(s"Good afternoon, it is ${hour.toInt -12}pm") if (hour.toInt > 12)
   } yield ()
 
+  val asktell2 = for {
+    firstname <- Ask("what is your first name?")
+    lastname <- Ask("what is your last name?")
+    age <- Ask("what is your age?")
+  } {
+    println(s"${firstname} ${lastname} ${age}")
+  }
   val asktellExec = new  Executor[AskTell] {
     override def exec[A](fa: AskTell[A], filter:Boolean) = fa match {
       case Ask(message) if filter => {
@@ -63,6 +70,7 @@ object enhanced extends App {
   }
 
   runFree(asktell, asktellExec)
+  runFree(asktell2, asktellExec)
 
   def runFree[F[_], A](prg: Free[F, A], executor: Executor[F]): A = {
     prg match {
