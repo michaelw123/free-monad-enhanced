@@ -1,0 +1,5 @@
+package freemonads
+
+object enhanced {
+
+}

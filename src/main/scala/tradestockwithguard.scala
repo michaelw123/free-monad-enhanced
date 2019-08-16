@@ -61,8 +61,8 @@ object tradestockwithguard extends App {
 
   val asktell = for {
     hour <- Ask("What time is it?")
-    morning <- Tell("Good Morning")  if (hour <= "12")
-    afternoon <- Tell("Good afternoon") if (hour > "12")
+    morning <- Tell("Good Morning, $hour")  if (hour <= "12")
+    afternoon <- Tell(s"Good afternoon, ${hour}") if (hour > "12")
   } yield ()
 
   val asktellExec = new  Executor[AskTell] {
