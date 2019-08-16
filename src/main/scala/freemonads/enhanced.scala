@@ -43,8 +43,8 @@ object enhanced extends App {
 
   val asktell = for {
     hour <- Ask("What time is it?")
-    _ <- Tell(s"Good Morning, it is ${hour}am")  if (hour <= "12")
-    _ <- Tell(s"Good afternoon, it is ${hour}pm") if (hour > "12")
+    _ <- Tell(s"Good Morning, it is ${hour}am")  if (hour.toInt <= 12)
+    _ <- Tell(s"Good afternoon, it is ${hour.toInt -12}pm") if (hour.toInt > 12)
   } yield ()
 
   val asktellExec = new  Executor[AskTell] {
