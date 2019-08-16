@@ -58,8 +58,8 @@ object enhanced extends App {
     override def exec[A](fa: AskTell[A], filter:Boolean) = fa match {
       case Ask(message) if filter => {
         println(message)
-        val hour = scala.io.StdIn.readLine()
-        hour.asInstanceOf[A]
+        val result = scala.io.StdIn.readLine()
+        result.asInstanceOf[A]
       }
       case Tell(message) if filter => {
         println(message)
