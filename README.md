@@ -1,1 +1,1 @@
-Incorporate foreach and guards with monadic operations in Free Monads.
+Incorporate foreach and withFilter with monadic operations in Free Monads.
