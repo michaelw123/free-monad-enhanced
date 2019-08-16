@@ -1,1 +1,1 @@
-Incorporate foreach and withFilter with monadic operations in Free Monads.
+Incorporate foreach and withFilter with monadic operations in Free Monads to fully utilize for comprehension for work flow modelling in Scala.
