@@ -15,7 +15,7 @@ object basic extends App {
   case class FlatMap[F[_], I, A](sub: F[I], cont: I => Free[F, A]) extends Free[F, A]
 
   implicit def liftF[F[_], A](fa: F[A]): Free[F, A] = FlatMap(fa, Return.apply)
-  
+
   sealed trait AskTell[A]
   case class Ask(message:String) extends AskTell[String]
   case class Tell(message:String) extends AskTell[String]

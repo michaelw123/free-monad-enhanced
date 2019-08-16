@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29a9ce7e-6e28-450c-ab26-0b40e23140e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/freemonads/basic.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/freemonads/enhanced.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/freemonads/basic.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/freemonads/basic.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/freemonads/enhanced.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/freemonads/enhanced.scala" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/project/project/target/" />
@@ -48,26 +47,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="63" column="35" lean-forward="true" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/freemonads/basic.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+            <state relative-caret-position="212">
+              <caret line="59" column="3" lean-forward="true" selection-end-line="117" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/freemonads/basic.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="34" column="28" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="34" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/freemonads/enhanced.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            <state relative-caret-position="137">
+              <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -140,6 +139,7 @@
         <option value="$PROJECT_DIR$/notes.txt" />
         <option value="$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/freemonads/basic.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/freemonads/enhanced.scala" />
       </list>
     </option>
   </component>
@@ -183,6 +183,14 @@
               <item name="freemonad1" type="b2602c69:ProjectViewProjectNode" />
               <item name="free-monad-enhanced" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+              <item name="freemonads" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="freemonad1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-monad-enhanced" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -218,7 +226,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.basic">
+  <component name="RunManager" selected="Application.enhanced">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -245,10 +253,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="forcomptest2" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="forcomptest2" />
+    <configuration name="enhanced" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="freemonads.enhanced" />
       <module name="freemonad1" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="freemonads.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -304,11 +318,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.enhanced" />
         <item itemvalue="Application.basic" />
         <item itemvalue="Application.tradestockwithguard" />
         <item itemvalue="Application.tradestock" />
         <item itemvalue="Application.tradestockwithforeach" />
-        <item itemvalue="Application.forcomptest2" />
       </list>
     </recent_temporary>
   </component>
@@ -523,7 +537,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565891912920</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="final touch">
+      <created>1565962131316</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1565962131316</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -805,24 +826,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/freemonads/enhanced.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/tradestockwithguard.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="63" column="35" lean-forward="true" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+        <state relative-caret-position="212">
+          <caret line="59" column="3" lean-forward="true" selection-end-line="117" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/freemonads/basic.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+        <state relative-caret-position="323">
+          <caret line="34" column="28" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="34" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/freemonads/enhanced.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
         </state>
       </provider>
     </entry>
