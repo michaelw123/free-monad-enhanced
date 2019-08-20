@@ -2,7 +2,6 @@ package freemonads
 
 object basic extends App {
   sealed trait Free[F[_], A]  {
-    private[this] var ph: A = _
     def flatMap[B](f: A => Free[F, B]): Free[F, B] = this match {
       case Return(a) => f(a)
       case FlatMap(sub, cont) => {
