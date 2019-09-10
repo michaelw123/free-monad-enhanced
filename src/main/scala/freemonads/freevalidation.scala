@@ -1,6 +1,6 @@
 package freemonads
 
-object validation extends App {
+object freevalidation extends App {
   sealed trait Free[F[_], A]  {
     def flatMap[B](f: A => Free[F, B]): Free[F, B] = this match {
       case Return(a) => f(a)
@@ -36,7 +36,7 @@ object validation extends App {
     age  <- AgeValidator(18)
   } yield save(name, age)
 
-  val x = validate(validation, validators)
+  //val x = validate(validation, validators)
 
   def save(name:String, age:Int) = println(s"save $name at age $age")
 
