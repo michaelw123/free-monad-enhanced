@@ -14,10 +14,6 @@ object freevalidation2 extends App {
   case class FlatMap[F[_], I, A](sub: F[I], cont: I => Free[F, A]) extends Free[F, A]
 
   implicit def liftF[F[_], A](fa: F[A]): Free[F, A] = FlatMap(fa, Return.apply)
-//  implicit def unliftO[A](option: Option[A]):A = option match {
-//    case Some(a) => a
-//
-//  }
 
   case class NameAge(name:String, age:Int)
   sealed trait Validator[A] {
@@ -51,25 +47,30 @@ object freevalidation2 extends App {
   }
 
   val validation = for {
-  
     name <- NameValidator("Joe Doe")
-    age  <- AgeValidator(19)
-    //nameage <- NameAgeValidator(NameAge("Michael",55))
-  } yield save(name, age)
+    age  <- AgeValidator(18)
+    nameage <- NameAgeValidator(NameAge("Michael",55))
+  } yield save(nameage)
 
   println(validation)
-  val x = validate(validation, validators)
+  val x = validateAndRun(validation, validators)
   println(x)
 
-  def save(name:String, age:Int) = println(s"save $name at age $age")
-  def save(nameage:NameAge) = println(s"save ${nameage.name} at age ${nameage.age}")
+  def save(name:String, age:Int):Boolean = {
+    println(s"save $name at age $age")
+    true
+  }
+  def save(nameage:NameAge):Boolean = {
+    println(s"save ${nameage.name} at age ${nameage.age}")
+    true
+  }
 
-  def validate[F[_], A](prg: Free[F, A], executor: Executor[F]): Option[A] = {
+  def validateAndRun[F[_], A](prg: Free[F, A], executor: Executor[F]): Option[A] = {
     prg match {
       case Return(a) => Some(a)
       case FlatMap(sub, cont) => {
         executor.exec(sub) match {
-          case Some(y) => validate(cont(y), executor)
+          case Some(y) => validateAndRun(cont(y), executor)
           case None => None
         }
       }
