@@ -1,6 +1,6 @@
 package freemonads
-import scala.util.{Try, Success, Failure}
-object freevalidation2 extends App {
+import scala.util.{Either, Left, Right}
+object freevalidation3 extends App {
   sealed trait Free[F[_], A]  {
     def flatMap[B](f: A => Free[F, B]): Free[F, B] = this match {
       case Return(a) => f(a)
@@ -17,22 +17,22 @@ object freevalidation2 extends App {
 
   case class NameAge(name:String, age:Int)
   sealed trait Validator[A] {
-    def validate(arg:A):Try[A]
+    def validate(arg:A):Either[Exception, A]
   }
   case class NameValidator(name:String) extends Validator[String] {
-    def validate (name:String) =  Success(name)
+    def validate (name:String) =  Right(name)
   }
   case class AgeValidator(age:Int) extends Validator[Int] {
-    def validate(age: Int) = if (age == 18) Success(age) else Failure(new Exception("Illegal Age"))
+    def validate(age: Int) = if (age == 18) Right(age) else Left(new Exception("Illegal Age"))
   }
   case class NameAgeValidator(nameage:NameAge) extends Validator[NameAge] {
-    def validate(nameage: NameAge) = Success(nameage)
+    def validate(nameage: NameAge) = Right(nameage)
   }
   sealed trait Executor[F[_]] {
-    def exec[A](fa: F[A]): Try[A]
+    def exec[A](fa: F[A]): Either[Exception, A]
   }
   val validators = new  Executor[Validator] {
-    override def exec[A](fa: Validator[A]):Try[A] = fa match {
+    override def exec[A](fa: Validator[A]):Either[Exception, A] = fa match {
       case NameValidator(name) => {
         println(s"validate name $name")
         fa.validate(name.asInstanceOf[A])
@@ -50,7 +50,7 @@ object freevalidation2 extends App {
 
   val validation = for {
     name <- NameValidator("Joe Doe")
-    age  <- AgeValidator(19)
+    age  <- AgeValidator(18)
     nameage <- NameAgeValidator(NameAge("Michael",55))
   } yield save(nameage)
 
@@ -67,9 +67,9 @@ object freevalidation2 extends App {
     true
   }
 
-  def validateAndRun[F[_], A](prg: Free[F, A], executor: Executor[F]): Try[A] = {
+  def validateAndRun[F[_], A](prg: Free[F, A], executor: Executor[F]): Either[Exception, A] = {
     prg match {
-      case Return(a) => Success(a)
+      case Return(a) => Right(a)
       case FlatMap(sub, cont) => {
         executor.exec(sub).flatMap(x => validateAndRun(cont(x), executor))
       }
