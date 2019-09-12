@@ -50,7 +50,7 @@ object freevalidation2 extends App {
 
   val validation = for {
     name <- NameValidator("Joe Doe")
-    age  <- AgeValidator(19)
+    age  <- AgeValidator(18)
     nameage <- NameAgeValidator(NameAge("Michael",55))
   } yield save(nameage)
 

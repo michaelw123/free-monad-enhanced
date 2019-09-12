@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29a9ce7e-6e28-450c-ab26-0b40e23140e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/freemonads/freevalidation1.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/freemonads/freevalidation.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/freemonads/freevalidation1.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/freemonads/freevalidation1.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/freemonads/freevalidation2.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/freemonads/freevalidation2.scala" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -36,20 +35,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/freemonads/freevalidation1.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="67" column="3" selection-end-line="81" />
+            <state relative-caret-position="391">
+              <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/freemonads/freevalidation2.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="73" column="74" selection-start-line="73" selection-start-column="74" selection-end-line="73" selection-end-column="74" />
+            <state relative-caret-position="332">
+              <caret line="73" column="74" lean-forward="true" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -136,8 +135,8 @@
         <option value="$PROJECT_DIR$/src/main/scala/freemonads/basic.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/freemonads/enhanced.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/freemonads/freevalidation.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/freemonads/freevalidation1.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/freemonads/freevalidation2.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/freemonads/freevalidation1.scala" />
       </list>
     </option>
   </component>
@@ -223,7 +222,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.freevalidation2 (1)">
+  <component name="RunManager" selected="Application.freevalidation2">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -328,8 +327,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.freevalidation2 (1)" />
         <item itemvalue="Application.freevalidation2" />
+        <item itemvalue="Application.freevalidation2 (1)" />
         <item itemvalue="Application.validation" />
         <item itemvalue="Scala Console.Scala Console" />
         <item itemvalue="Application.basic" />
@@ -646,14 +645,21 @@
       <option name="project" value="LOCAL" />
       <updated>1568206691110</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Free Validation">
+      <created>1568312803517</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1568312803518</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19537275" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19537275" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -662,7 +668,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27916667" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27916667" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.36666667" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -843,13 +849,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/freemonads/freevalidation1.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="67" column="3" selection-end-line="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/freemonads/enhanced.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -887,8 +886,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/freemonads/freevalidation2.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="73" column="74" selection-start-line="73" selection-start-column="74" selection-end-line="73" selection-end-column="74" />
+        <state relative-caret-position="332">
+          <caret line="73" column="74" lean-forward="true" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/freemonads/freevalidation1.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
         </state>
       </provider>
     </entry>

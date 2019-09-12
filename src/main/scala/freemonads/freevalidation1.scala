@@ -71,10 +71,7 @@ object freevalidation1 extends App {
     prg match {
       case Return(a) => Some(a)
       case FlatMap(sub, cont) => {
-        executor.exec(sub) match {
-          case Some(y) => validateAndRun(cont(y), executor)
-          case None => None
-        }
+        executor.exec(sub).flatMap(x => validateAndRun(cont(x), executor))
       }
     }
   }
