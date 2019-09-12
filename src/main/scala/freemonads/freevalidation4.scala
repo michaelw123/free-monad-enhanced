@@ -1,6 +1,6 @@
 package freemonads
 import scala.util.{Either, Left, Right}
-object freevalidation3 extends App {
+object freevalidation4 extends App {
   sealed trait Free[F[_], A]  {
     def flatMap[B](f: A => Free[F, B]): Free[F, B] = this match {
       case Return(a) => f(a)
