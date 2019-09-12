@@ -28,7 +28,9 @@ object freevalidation2 extends App {
   case class NameAgeValidator(nameage:NameAge) extends Validator[NameAge] {
     def validate(nameage: NameAge) = Some(nameage)
   }
-
+  sealed trait Executor[F[_]] {
+    def exec[A](fa: F[A]): Option[A]
+  }
   val validators = new  Executor[Validator] {
     override def exec[A](fa: Validator[A]):Option[A] = fa match {
       case NameValidator(name) => {
@@ -48,7 +50,7 @@ object freevalidation2 extends App {
 
   val validation = for {
     name <- NameValidator("Joe Doe")
-    age  <- AgeValidator(18)
+    age  <- AgeValidator(19)
     nameage <- NameAgeValidator(NameAge("Michael",55))
   } yield save(nameage)
 
@@ -69,16 +71,8 @@ object freevalidation2 extends App {
     prg match {
       case Return(a) => Some(a)
       case FlatMap(sub, cont) => {
-        executor.exec(sub) match {
-          case Some(y) => validateAndRun(cont(y), executor)
-          case None => None
-        }
+        executor.exec(sub).flatMap(x => validateAndRun(cont(x), executor))
       }
     }
-  }
-
-
-  sealed trait Executor[F[_]] {
-    def exec[A](fa: F[A]): Option[A]
   }
 }
