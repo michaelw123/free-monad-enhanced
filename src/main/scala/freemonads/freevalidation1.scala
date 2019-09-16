@@ -20,10 +20,10 @@ object freevalidation1 extends App {
     def validate(arg:A):Option[A]
   }
   case class NameValidator(name:String) extends Validator[String] {
-    def validate (name:String) =  Some(name)
+    def validate (name:String) =  if (name.isEmpty) None else Some(name)
   }
   case class AgeValidator(age:Int) extends Validator[Int] {
-    def validate(age: Int) = if (age == 18) Some(age) else None
+    def validate(age: Int) = if (age >= 18) Some(age) else None
   }
   case class NameAgeValidator(nameage:NameAge) extends Validator[NameAge] {
     def validate(nameage: NameAge) = Some(nameage)
@@ -34,15 +34,12 @@ object freevalidation1 extends App {
   val validators = new  Executor[Validator] {
     override def exec[A](fa: Validator[A]):Option[A] = fa match {
       case NameValidator(name) => {
-        println(s"validate name $name")
         fa.validate(name.asInstanceOf[A])
       }
       case AgeValidator(age) => {
-        println(s"validate age $age")
         fa.validate(age.asInstanceOf[A])
       }
       case NameAgeValidator(nameage) => {
-        println("validate nameage")
         fa.validate(nameage.asInstanceOf[A])
       }
     }
